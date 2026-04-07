@@ -1,7 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\src",
+    "\\src\\Minesweeper.Console"
   ],
-  "SelectedNode": "\\C:\\Users\\ryans\\Source\\Repos\\project-3-rynostidham",
+  "SelectedNode": "\\Minesweeper.sln",
   "PreviewInSolutionExplorer": false
 }
