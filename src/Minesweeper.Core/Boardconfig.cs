@@ -4,19 +4,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Minesweeper.Core
+namespace Minesweeper.Core;
+
+public static class BoardConfig
 {
-    public static class Boardconfig
+    public static (int rows, int cols, int mines) GetConfig(BoardSize size)
     {
-        public static (int rows, int cols, int mines) GetConfig(BoardSize size)
+        return size switch
         {
-            return size switch
-            {
-                BoardSize.Small8x8 => (8, 8, 10),
-                BoardSize.Medium12x12 => (12, 12, 25),
-                BoardSize.Large16x16 => (16, 16, 40),
-                _ => throw new ArgumentOutOfRangeException(nameof(size))
-            };
-        }
+            BoardSize.Small8x8 => (8, 8, 10),
+            BoardSize.Medium12x12 => (12, 12, 25),
+            BoardSize.Large16x16 => (16, 16, 40),
+            _ => throw new ArgumentOutOfRangeException()
+        };
     }
 }
