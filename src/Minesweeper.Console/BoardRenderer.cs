@@ -1,7 +1,9 @@
 ﻿using Minesweeper.Core;
 
 namespace Minesweeper.ConsoleApp;
-
+/// <summary>
+/// Program that renders all of the tiles on the board in a simple text format.
+/// </summary>
 public static class BoardRenderer
 {
     public static void RenderBoard(Board board)

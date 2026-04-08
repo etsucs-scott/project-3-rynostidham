@@ -1,43 +1,71 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/ozVFrFMv)
-# CSCI 1260 — Project
+### Minesweeper ###
 
-## Project Instructions
-All project requirements, grading criteria, and submission details are provided on **D2L**.  
-Refer to D2L as the *authoritative source* for this assignment.
+This project is an inmplementation of Minesweeper game using C#
+it includes a fully interactive console UI, a game engine, high scores,
+and full unit test coverage.
 
-This repository is intentionally minimal. You are responsible for:
-- Creating the solution and projects
-- Designing the class structure
-- Implementing the required functionality
+## How to buld and run the game 
 
----
+**1 Restore dependencies**
+From the solution root:
+dotnet restore
 
-## Getting Started (CLI)
-
-You may use **Visual Studio**, **VS Code**, or the **terminal**.
-
-### Create a solution
-```bash
-dotnet new sln -n ProjectName
-```
-
-### Create a project (example: console app)
-```bash
-dotnet new console -n ProjectName.App
-```
-
-### Add the project to the solution
-```bash
-dotnet sln add ProjectName.App
-```
-
-### Build and run
-```bash
+**2 build the solution**
 dotnet build
-dotnet run --project ProjectName.App
-```
 
-## Notes
-- Commit early and commit often.
-- Your repository history is part of your submission.
-- Update this README with build/run instructions specific to your project.
+**3 Run the consle game**
+Make sure Minesweeper.Console is the startup project.
+Then hit the green start button at the top or use 
+dotnet run --project src/Minesweeper.Console
+
+## How to play
+When the game starts you will select a board size 
+1. Small (8x8)
+2. Medium (12x12)
+3. Large (16x16)
+OR
+Q. Quit
+
+## Seed Usage 
+After choosing a board size you will be prompted 
+to enter a seed value 
+**Enter returns a random seed**
+**Enter a number to generate a specific board**
+
+## Input Commands 
+**r row col' - reveal the tile at (row, col) ex 1,2**
+**f row col' - flag the tile at (row, col) ex 1,2**
+**q - quit the game**
+
+## Board symbols 
+**# - Hidden tile**
+**F - Flagged tile**
+//* - Mine shown only after losing.//
+** . - Revealed empty tile with no adjacent mines**
+**1-8 - Revealed tile with the number of adjacent mines**
+
+## High Score System 
+**High scores are stored in data/highscores.csv**
+**CSV Format**
+**Each row containts : size, seconds, moves, seed, timestamp**
+**EX Small8x8.42.18,1234,2024-04-08T12:34:33Z**
+
+## Rules 
+** Only the top 5 scores per board size are kept.**
+** Sorted by seconds and moves.**
+
+## Running Unit Tests
+**From the solution root:**
+dotnet test
+**Runs all test in test/Minesweeper.Tests**
+**Test include : Board generation, Adjacency count, Cascade reveal,
+Win/lose rule, Seed determinism
+
+## Project structure 
+src/
+	Minesweeper.Console/  # Console UI project
+	Minesweeper.Core/     # Game engine and logic
+tests/ 
+	Minesweeper.Tests/    # Unit tests for the game engine
+UML/
+	MineSweeperUML.drawio #UML diagram of the game engine
