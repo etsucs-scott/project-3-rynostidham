@@ -1,4 +1,8 @@
 ﻿namespace Minesweeper.Core;
+/// <summary>
+/// Game controller.
+/// Tracks moves,time, win/loss state,
+/// </summary>
 
 public class MinesweeperGame
 {
@@ -9,7 +13,9 @@ public class MinesweeperGame
 
     private readonly DateTime _start;
     public int Moves { get; private set; }
-
+    /// <summary>
+    ///Creates a new game with the given size and seed
+    /// </summary>
     public MinesweeperGame(BoardSize size, int seed)
     {
         Size = size;
@@ -17,7 +23,9 @@ public class MinesweeperGame
         Board = new Board(size, seed);
         _start = DateTime.UtcNow;
     }
-
+    /// <summary>
+    /// Reveals tiles and updates game board
+    /// </summary>
     public void Reveal(int r, int c)
     {
         if (State != GameState.InProgress) return;
@@ -43,7 +51,9 @@ public class MinesweeperGame
         Moves++;
         Board.ToggleFlag(r, c);
     }
-
+    /// <summary>
+    /// Returns time in game 
+    /// </summary>
     public int GetElapsedSeconds()
         => (int)(DateTime.UtcNow - _start).TotalSeconds;
 }

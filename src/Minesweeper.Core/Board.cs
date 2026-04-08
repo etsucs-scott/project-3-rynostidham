@@ -2,6 +2,11 @@
 using System.Collections.Generic;
 
 namespace Minesweeper.Core;
+/// <summary>
+/// Represents the full Minesweeper board.
+/// Handles mine placement, adjacency calculation,
+/// tile revealing, flagging, and cascade reveal logic.
+/// </summary>
 
 public class Board
 {

@@ -5,9 +5,16 @@ using System.IO;
 using System.Linq;
 
 namespace Minesweeper.Core;
-
+/// <summary>
+/// Loads, saves, and sorts high scores
+/// In CSV file
+/// Keeps only top 5 scores per board size.
+/// </summary>
 public class HighScoreManager
 {
+    /// <summary>
+    /// Loads all valid high score entires from CSV file.
+    /// </summary>
     private readonly string _filePath;
 
     public HighScoreManager(string filePath)
@@ -17,6 +24,10 @@ public class HighScoreManager
 
     public List<HighScore> Load()
     {
+        /// <summary>
+        /// Adds a new score, sorts the list.
+        /// writes the top 5 into CSV file.
+        /// </summary>
         var scores = new List<HighScore>();
 
         if (!File.Exists(_filePath))
@@ -28,21 +39,20 @@ public class HighScoreManager
             }
             catch
             {
-                // If creation fails, return empty list but don't crash
                 return scores;
             }
         }
 
         try
         {
-            var lines = File.ReadAllLines(_filePath).Skip(1); // skip header
+            var lines = File.ReadAllLines(_filePath).Skip(1);
 
             foreach (var line in lines)
             {
                 var parts = line.Split(',');
 
                 if (parts.Length != 5)
-                    continue; // skip malformed lines
+                    continue;
 
                 if (!Enum.TryParse(parts[0], out BoardSize size))
                     continue;
@@ -71,7 +81,6 @@ public class HighScoreManager
         }
         catch
         {
-            // If reading fails, return empty list but don't crash
             return new List<HighScore>();
         }
 
@@ -113,7 +122,6 @@ public class HighScoreManager
         }
         catch
         {
-            // Do not crash — console UI will show an error
         }
     }
 }

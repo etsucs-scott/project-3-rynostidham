@@ -1,5 +1,8 @@
 ﻿namespace Minesweeper.Core;
-
+/// <summary>
+/// Represents a single high score entry
+/// Stores baord size, time, moves, and seed.
+/// </summary>
 public class HighScore
 {
     public BoardSize Size { get; set; }

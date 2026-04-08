@@ -5,6 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Minesweeper.Core;
+/// <summary>
+/// Provides board dimensions and mine counts
+/// for each board size.
+/// </summary>
 
 public static class BoardConfig
 {

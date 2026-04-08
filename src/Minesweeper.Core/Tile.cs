@@ -5,7 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Minesweeper.Core;
-
+/// <summary>
+/// Represents a single tile on the Minesweeper board.
+/// Stores whether it is a mine, revealed, flagged,
+/// and how many adjacent mines surround it.
+/// </summary>
 public class Tile
 {
     public bool IsMine { get; internal set; }
